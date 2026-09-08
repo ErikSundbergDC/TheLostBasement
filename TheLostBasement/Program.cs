@@ -11,15 +11,15 @@
             rooms[0].North = rooms[1];
             rooms[1].South = rooms[0];
 
+            PlayerCharacter playerCharacter = new PlayerCharacter("Erik");
 
-            foreach (Room room in rooms)
+            bool gameRunning = true;
+            while(gameRunning)
             {
-                room.Display();
-                
-                Console.WriteLine();
+                gameRunning = playerCharacter.PerformCommand();
             }
-         
 
+            Console.WriteLine("Nu lämnar du källaren!");
 
         }
     }
