@@ -12,10 +12,12 @@
             rooms[1].South = rooms[0];
 
             PlayerCharacter playerCharacter = new PlayerCharacter("Erik");
+            playerCharacter.Position = rooms[0];
 
             bool gameRunning = true;
             while(gameRunning)
             {
+                playerCharacter.Position.Display();
                 gameRunning = playerCharacter.PerformCommand();
             }
 

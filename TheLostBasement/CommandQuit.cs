@@ -13,7 +13,7 @@ namespace TheLostBasement
                 return "Quit";
             }
         }
-        public override bool PerformCommand()
+        public override bool PerformCommand(PlayerCharacter playerCharacter)
         {
             Console.WriteLine("You are leaving the basement!");
             return false;

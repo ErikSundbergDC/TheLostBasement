@@ -8,6 +8,8 @@ namespace TheLostBasement
     {
         public string Name { get; set; }
 
+        public Room Position { get; set; }
+
         public List<Command> CommandList { get; set; }
 
         public PlayerCharacter(string name)
@@ -15,6 +17,7 @@ namespace TheLostBasement
             Name = name;
             CommandList = new List<Command>();
             CommandList.Add(new CommandQuit());
+            CommandList.Add(new CommandNorth());
         }
 
         public bool PerformCommand()
@@ -25,9 +28,9 @@ namespace TheLostBasement
             bool continueGame = true;
             foreach (Command command in CommandList)
             {
-                if (command.Name == commandString)
+                if (command.Name.ToLower() == commandString.ToLower())
                 {
-                    continueGame = command.PerformCommand();
+                    continueGame = command.PerformCommand(this);
                     break;
                 }
             }
