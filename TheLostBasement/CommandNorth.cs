@@ -21,7 +21,7 @@ namespace TheLostBasement
             }
             else
             {
-                Console.WriteLine("You can't gp that way!");
+                Console.WriteLine("You can't go that way!");
             }
             return true;
         }
