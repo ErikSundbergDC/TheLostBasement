@@ -4,37 +4,43 @@ using System.Text;
 
 namespace TheLostBasement
 {
-    internal class PlayerCharacter
+    internal class PlayerCharacter : Character
     {
-        public string Name { get; set; }
-
-        public Room Position { get; set; }
 
         public List<Command> CommandList { get; set; }
 
-        public PlayerCharacter(string name)
+        public PlayerCharacter(string name) : base(name)
         {
-            Name = name;
             CommandList = new List<Command>();
             CommandList.Add(new CommandQuit());
             CommandList.Add(new CommandNorth());
+            CommandList.Add(new CommandSouth());
+            CommandList.Add(new CommandEast());
+            CommandList.Add(new CommandWest());
         }
 
         public bool PerformCommand()
         {
+            bool continueGame = true;
             Console.Write("What do you want to do? ");
             string commandString = Console.ReadLine();
-
-            bool continueGame = true;
-            foreach (Command command in CommandList)
+            commandString = commandString.Trim();
+            if (commandString.Length > 0)
             {
-                if (command.Name.ToLower() == commandString.ToLower())
+                
+                foreach (Command command in CommandList)
                 {
-                    continueGame = command.PerformCommand(this);
-                    break;
+                    if (command.Name.ToLower().StartsWith(commandString.ToLower()))
+                    {
+                        continueGame = command.PerformCommand(this);
+                        break;
+                    }
                 }
             }
-
+            else
+            {
+                Console.WriteLine("Huh?");
+            }
             return continueGame;
         }
     }

@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
+
+
 namespace TheLostBasement
 {
     internal class Room
     {
+        public List<Character> characters = new List<Character>();
+
         public string Name { get; private set; }
         public string Description { get; set; }
 
@@ -52,6 +56,14 @@ namespace TheLostBasement
             Console.WriteLine();
         }
 
+        private void DisplayCharacters()
+        {
+            foreach (Character character in characters)
+            {
+                Console.WriteLine(character.Name + " is here.");
+            }
+        }
+
         public void Display()
         {
             
@@ -59,6 +71,8 @@ namespace TheLostBasement
             Console.WriteLine(UnderLine(Name));
             Console.WriteLine();
             Console.WriteLine(Description);
+            Console.WriteLine();
+            DisplayCharacters();
             Console.WriteLine();
             DisplayExits();
 
